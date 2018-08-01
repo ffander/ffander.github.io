@@ -1,88 +1,246 @@
 <!DOCTYPE html>
 <html>
-<head>
-    
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ROCKET Radio x FAT FAT FAT Festival 2018</title>
+    <link href="https://fonts.googleapis.com/css?family=Cardo|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/solid.css" integrity="sha384-wnAC7ln+XN0UKdcPvJvtqIH3jOjs9pnKnq9qX68ImXvOGz2JuFoEiCjT8jyZQX2z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-HbmWTHay9psM8qyzEKPc8odH4DsOuzdejtnr+OFtDmOcIVnhgReQ4GZBH7uwcjf6" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js?v=1"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="lib/favicon.ico">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <div class="content">
+              <div class="level">
+                <div class="level-item has-text-right-desktop">
+                  <a href="https://rocketradiolive.com">
+                    <figure class="rrlogo image is-3by1">
+                      <img src="/lib/rrlogo.png" alt="ROCKET Radio">
+                    </figure>
+                  </a>
+                </div>
+                <div class="level-item has-text-centered">
+                  <p class="is-size-4">x</p>
+                </div>
+                <div class="level-item has-text-left-desktop">
+                  <a href="https://www.fatfatfatfestival.it/" style="text-decoration: none;">
+                    <p class="is-size-2 fff"><span class="has-text-weight-bold">FAT FAT FAT</span> Festival</p>
+                  </a>
+                </div>
+              </div>
+              <div class="playerbox has-text-centered">
+                <canvas id="playerCanvas" class="disabled">
+                </canvas>
+                <div class="playerinfo is-size-5">
+                  <p></p>
+                </div>
+              </div>
+              <audio src="https://gintonic.tk:8001/mirror">
+              </audio>
+              <div class="has-text-centered is-vertically-aligned-parent nowplaying">
+                <div>
+                  <span class="button is-danger is-outlined">NOW PLAYING</span>
+                </div>
+                <div>
+                  <span class="is-stream-title is-size-3"></span>
+                </div>
+              </div>
+              <h2 class="has-text-justified has-text-serif"><a href="https://rocketradiolive.com/">ROCKET Radio</a> is partnering with <a href="https://www.fatfatfatfestival.it/">FAT FAT FAT Festival</a> to bring you a hand-picked selection of shows from this year's edition of the Festival taking place from August 3rd to 5th, in the heart of the wonderful Marche region.</h2>
+              <h2 class="has-text-justified has-text-serif">As they say, <span class="is-italic">“You can't download the experience„</span> — but at least you can stream some of the main acts from the <span class="is-italic">Garden Stage</span>, live as they are happening, via the dedicated RRxFatFatFat player above, or via our <a href="https://itunes.apple.com/us/app/rocket-radio-broadcast/id1080757523?mt=8&uo=4&at=11l6hc&app=itunes">iOS app</a>.</h2>
+              <div class="schedule">
+                <div class="tile is-ancestor">
+                  <div class="tile is-vertical">
+                    <div class="tile">
+                      <div class="tile is-parent">
+                        <article class="tile is-child notification is-info">
+                          <p class="title has-text-centered-mobile">Saturday,</p>
+                          <p class="subtitle has-text-centered-mobile">4th August</p>
+                        </article>
+                      </div>
+                      <div class="tile is-parent is-8 is-vertical">
+                        <article class="tile is-child notification is-primary">
+                          <p class="title has-text-centered-mobile">LTJ Experience</p>
+                          <p class="subtitle has-text-right-tablet has-text-centered-mobile">21:00 - 22:30</p>
+                        </article>
+                        <article class="tile is-child notification is-primary">
+                          <p class="title has-text-centered-mobile">Patrick Gibin</p>
+                          <p class="subtitle has-text-right-tablet has-text-centered-mobile">22:30 - 00:30</p>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="tile is-ancestor">
+                  <div class="tile is-vertical">
+                    <div class="tile is-reversed">
+                      <div class="tile is-parent">
+                        <article class="tile is-child notification is-info">
+                          <p class="title has-text-centered-mobile">Sunday,</p>
+                          <p class="subtitle has-text-centered-mobile">5th August</p>
+                        </article>
+                      </div>
+                      <div class="tile is-parent is-8 is-vertical">
+                        <article class="tile is-child notification is-primary">
+                          <p class="title has-text-centered-mobile">Bradley Zero</p>
+                          <p class="subtitle has-text-right-tablet has-text-centered-mobile">20:00 - 22:00</p>
+                        </article>
+                        <article class="tile is-child notification is-primary">
+                          <p class="title has-text-centered-mobile">Jaren <span class="subtitle">Live</span></p>
+                          <p class="subtitle has-text-right-tablet has-text-centered-mobile">2:00 - 3:00</p>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="has-text-centered">
+                  <p>All times are CEST</p>
+                </div>
+              </div>
+              <div id="toggleschedule" class="has-text-centered">
+                <div class="dasher">
+                  <div class="dash">
+                  </div>
+                </div>
+                <div class="tstextcontainer">
+                  <p class="is-size-5"><span id="tstext">Show</span> schedule<span class="icon"><i id="tsicon" class="fas fa-angle-down"></i></span></p>
+                </div>
+                <div class="dasher">
+                  <div class="dash">
+                  </div>
+                </div>
+              </div>
 
-    
-    <title>Ghost</title>
-    <meta name="description" content="Just a blogging platform." />
-
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="shortcut icon" href="favicon.ico">
-
-    
-    <link rel="stylesheet" type="text/css" href="assets/css/screen.css?v=6b0d9f0156" />
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic|Open+Sans:700,400" />
-
-    
-    <meta name="generator" content="Ghost 0.4" />
-<link rel="alternate" type="application/rss+xml" title="Ghost" href="rss/index.html">
-<link rel="canonical" href="http://my-ghost-blog.com/" />
-</head>
-<body class="home-template">
-
-    
-    
 
 
+              <h2 class="has-text-serif has-text-justified"><span id="check-message">While you wait for the stream to start</span>, make sure to check out our archive, featuring shows from the artists playing the Garden Stage and related content:</h2>
 
 
-<header class="site-head" >
-    <div class="vertical">
-        <div class="site-head-content inner">
-            
-            <h1 class="blog-title">Ghost</h1>
-            <h2 class="blog-description">Just a blogging platform.</h2>
+            </div>
+              <div class="columns is-multiline">
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="fta" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/volcov.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">From The Archive</p>
+                        <p class="subtitle is-6">Volcov's long running show on Rocket Radio, showcasing the extraordinary depth of his record collection, presented in impeccable style.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="ltj" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/ltj.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">ULOSECONTROL 008</p>
+                        <p class="subtitle is-6">LTJ Experience alongside fellow diggers Gino & Fede Grasso for a special episode of Native's flamboyant show ULOSECONTROL.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="gibin" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/gibin.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">Mellow Out</p>
+                        <p class="subtitle is-6">Get to know Gibin's lingo: <span class="is-italic">pezzate</span> are those tracks that set the dancefloor on fire, and in Patrick's mixes there are plenty!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="prequel" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/prequel.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">Special w/ DJ Prequel</p>
+                        <p class="subtitle is-6">Rhythm Section affiliate DJ Prequel showing why Bradley Zero's label is one of the most exciting musical platforms right now.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="native" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/native.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">RR x FAT FAT FAT w/ Native </p>
+                        <p class="subtitle is-6">The preview night of the festival, now archived for your streaming pleasure ahead of the shaman's set on saturday in the Garden.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-half-tablet is-one-third-desktop">
+                  <div id="torben" class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="/lib/torben.jpg" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="title is-5">Max Graef's Torben Unit Band</p>
+                        <p class="subtitle is-6">If you are hyped for the live sounds of Jaren, then make sure to check out this equally exciting live session from Berlin's Torben Unit Band.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-    </div>
-</header>
-
-
-<main class="content" role="main">
-
-    
-    
-
-    <article class="post tag-getting-started">
-        <header class="post-header">
-            <span class="post-meta"><time datetime="2014-05-12">12 May 2014</time> on <a href="tag/getting-started/index.html">Getting Started</a></span>
-            <h2 class="post-title"><a href="welcome-to-ghost/index.html">Welcome to Ghost</a></h2>
-
-        </header>
-        <section class="post-excerpt">
-            <p>You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;your blog URL&gt;/ghost/. When you arrive, you can select this post from a list&hellip;</p>
-        </section>
-    </article>
-
-    
-
-    
-    <nav class="pagination" role="navigation">
-    
-    <span class="page-number">Page 1 of 1</span>
-    
-</nav>
-
-</main>
-
-    <footer class="site-footer">
-        <a class="subscribe icon-feed" href="http://my-ghost-blog.com/rss/"><span class="tooltip">Subscribe!</span></a>
-        <div class="inner">
-             <section class="copyright">All content copyright <a href="http://my-ghost-blog.com/">Ghost</a> &copy; 2014 &bull; All rights reserved.</section>
-             <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+      </div>
+    </section>
+    <footer class="footer has-text-centered">
+      <div class="container">
+         <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>
+              © 2018 |
+              <strong class="has-text-weight-semibold">
+                <a href="https://rocketradiolive.com">ROCKET Radio</a>
+              </strong>
+              &
+              <strong class="has-text-weight-semibold">
+                <a href="https://www.fatfatfatfestival.it/">FAT FAT FAT Festival</a>
+              </strong>
+            </p>
+          </div>
         </div>
+      </div>
     </footer>
-
-    
-    <script src="public/jquery.js?v=6b0d9f0156"></script>
-
-    
-    <script type="text/javascript" src="assets/js/jquery.fitvids.js?v=6b0d9f0156"></script>
-    <script type="text/javascript" src="assets/js/index.js?v=6b0d9f0156"></script>
-
-</body>
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
 </html>
