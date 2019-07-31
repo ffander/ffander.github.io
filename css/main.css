@@ -49,7 +49,7 @@ body {
   flex-direction: row-reverse; }
 
 .schedule {
-  max-height: 999px;
+  max-height: 1200px;
   overflow-y: hidden;
   transition: max-height 1s ease;
   -webkit-transition: max-height 1s ease;
@@ -6654,7 +6654,8 @@ article.tile.is-info {
   font-family: "Adieau", serif;
   color: #DBC6C1;
   background-color: #000000;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
 
 .card .content .subtitle {
   color: #000000;
