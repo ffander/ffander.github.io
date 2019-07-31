@@ -49,7 +49,7 @@ body {
   flex-direction: row-reverse; }
 
 .schedule {
-  max-height: 0;
+  max-height: 999px;
   overflow-y: hidden;
   transition: max-height 1s ease;
   -webkit-transition: max-height 1s ease;
@@ -6718,3 +6718,6 @@ span.is-outlined {
 
 .streamactive {
   max-height: 500px; }
+
+.card-image > .image {
+  mix-blend-mode: multiply; }
